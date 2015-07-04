@@ -39,3 +39,26 @@ int Solution3::lengthOfLongestSubstring(string s)
 		longest = len;
 	return longest;
 }
+
+//一种更简洁的方式
+int Solution3::lengthOfLongestSubstring2(string s)
+{
+	map<char, int> myMap;
+	int lastRepeatPosition = -1;
+	int i = 0;
+	int maxLen = 0;
+	while (i<s.size())
+	{
+		if (myMap.find(s[i]) != myMap.end() && lastRepeatPosition<myMap[s[i]])//找到了重复的字母
+		{
+			lastRepeatPosition = myMap[s[i]];
+
+		}
+		if (i - lastRepeatPosition > maxLen)
+			maxLen = i - lastRepeatPosition;
+		myMap[s[i]] = i;//每次都更新字母的index，重复的字母的index会被后面出现的字母所覆盖
+
+		++i;
+	}
+	return maxLen;
+}
