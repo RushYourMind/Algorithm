@@ -30,7 +30,7 @@ public:
 	// This algorithm used Hamming weight thoughts
 	// walk through the process of sample in wiki page, and you will understand
 	// https://en.wikipedia.org/wiki/Hamming_weight
-	int countOnes(int num) {
+	int countOnes_HammingWeight(int num) {
 		int count = num;
 		int a = 0x55555555; //010101010101010101010101010101 
 		int b = 0x33333333; //用于相邻的四位相加
